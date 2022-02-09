@@ -1,9 +1,9 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "description": "Discover REST APIs available within Liberty",
+        "description": "A set of RESTful APIs for managing deep learning jobs",
         "version": "1.0.0",
-        "title": "Liberty REST APIs"
+        "title": "Deep Learning Impact RESTful APIs"
     },
     "tags": [
         {

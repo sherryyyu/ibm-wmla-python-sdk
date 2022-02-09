@@ -17,7 +17,7 @@
 # IBM OpenAPI SDK Code Generator Version: 3.44.0-98838c07-20220128-151531
  
 """
-Discover REST APIs available within Liberty
+A set of RESTful APIs for managing deep learning jobs
 
 API Version: 1.0.0
 """
@@ -37,19 +37,19 @@ from .common import get_sdk_headers
 # Service
 ##############################################################################
 
-class LibertyRestApIsV1(BaseService):
-    """The Liberty REST APIs V1 service."""
+class DeepLearningImpactResTfulApIsV1(BaseService):
+    """The Deep Learning Impact RESTful APIs V1 service."""
 
     DEFAULT_SERVICE_URL = 'https://stumaster.rch.stglabs.ibm.com:9280'
-    DEFAULT_SERVICE_NAME = 'liberty_rest_ap_is'
+    DEFAULT_SERVICE_NAME = 'deep_learning_impact_res_tful_ap_is'
 
     @classmethod
     def new_instance(cls,
                      service_name: str = DEFAULT_SERVICE_NAME,
-                    ) -> 'LibertyRestApIsV1':
+                    ) -> 'DeepLearningImpactResTfulApIsV1':
         """
-        Return a new client for the Liberty REST APIs service using the specified
-               parameters and external configuration.
+        Return a new client for the Deep Learning Impact RESTful APIs service using
+               the specified parameters and external configuration.
         """
         authenticator = get_authenticator_from_environment(service_name)
         service = cls(
@@ -62,7 +62,7 @@ class LibertyRestApIsV1(BaseService):
                  authenticator: Authenticator = None,
                 ) -> None:
         """
-        Construct a new client for the Liberty REST APIs service.
+        Construct a new client for the Deep Learning Impact RESTful APIs service.
 
         :param Authenticator authenticator: The authenticator specifies the authentication mechanism.
                Get up to date information from https://github.com/IBM/python-sdk-core/blob/main/README.md
