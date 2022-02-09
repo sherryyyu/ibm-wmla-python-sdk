@@ -1991,7 +1991,30 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response that contains the resulh/algorithm/install"
+                        "description": "Successful response that contains the resulting hpo tasks.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "description": "A list of hpo algorithms.",
+                                    "items": {
+                                        "$ref": "#/components/schemas/HpoAlgorithmDesc"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request. The request was not formatted correctly."
+                    },
+                    "401": {
+                        "description": "Authentication error. The request was denied."
+                    },
+                    "403": {
+                        "description": "Forbidden. The request was denied."
+                    },
+                    "500": {
+                        "description": "An unexpected error occurred."
                     }
                 },
                 "servers": [
@@ -2003,6 +2026,9 @@
                     }
                 ]
             },
+            "parameters": []
+        },
+        "/platform/rest/deeplearning/v1/hypersearch/algorithm/install": {
             "post": {
                 "tags": [
                     "HyperSearch"
