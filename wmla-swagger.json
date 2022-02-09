@@ -4120,28 +4120,10 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Successful response that contains the resulting hpo tasks.",
-            "schema" : {
-              "type" : "array",
-              "description" : "A list of hpo algorithms.",
-   } ],
-        "responses" : {
-          "200" : {
-            "description" : "Successful response that contains the resulting hpo tasks.",
-            "schema" : {
-              "type" : "array",
-              "description" : "A list of hpo algorithms.",
-   } ],
-        "responses" : {
-          "200" : {
-            "description" : "Successful response that contains the resulting hpo tasks.",
-            "schema" : {
-              "type" : "array",
-              "description" : "A list of hpo algorithms.",
-   } ],
-        "responses" : {
-          "200" : {
-            "description" : "Successful response that contains the resulh/algorithm/install" : {
+            "description" : "Successful response that contains the resulh/algorithm/install" 
+          }
+        }
+      },
       "post" : {
         "tags" : [ "HyperSearch" ],
         "summary" : "Install a new hpo plugin algorithm",
