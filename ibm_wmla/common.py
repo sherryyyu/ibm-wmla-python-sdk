@@ -19,10 +19,10 @@ This module provides common methods for use across all service modules.
 """
 
 import platform
-from ibm_pvs.version import __version__
+from ibm_wmla.version import __version__
 
 HEADER_NAME_USER_AGENT = 'User-Agent'
-SDK_NAME = 'powercloud-python-sdk'
+SDK_NAME = 'wmla-python-sdk'
 
 def get_system_info():
     """
