@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # IBM OpenAPI SDK Code Generator Version: 3.44.0-98838c07-20220128-151531
- 
+
 """
 A set of RESTful APIs for managing deep learning jobs
 
@@ -37,7 +37,7 @@ from .common import get_sdk_headers
 # Service
 ##############################################################################
 
-class DeepLearningImpactResTfulApIsV1(BaseService):
+class DeepLearningImpactV1(BaseService):
     """The Deep Learning Impact RESTful APIs V1 service."""
 
     DEFAULT_SERVICE_URL = 'https://stumaster.rch.stglabs.ibm.com:9280'
