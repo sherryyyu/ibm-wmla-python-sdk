@@ -40,13 +40,13 @@ from .common import get_sdk_headers
 class DeepLearningImpactV1(BaseService):
     """The Deep Learning Impact RESTful APIs V1 service."""
 
-    DEFAULT_SERVICE_URL = 'https://stumaster.rch.stglabs.ibm.com:9280'
+    DEFAULT_SERVICE_URL = 'https://deep_learning_impact'
     DEFAULT_SERVICE_NAME = 'deep_learning_impact_res_tful_ap_is'
 
     @classmethod
     def new_instance(cls,
                      service_name: str = DEFAULT_SERVICE_NAME,
-                    ) -> 'DeepLearningImpactResTfulApIsV1':
+                    ) -> 'DeepLearningImpactV1':
         """
         Return a new client for the Deep Learning Impact RESTful APIs service using
                the specified parameters and external configuration.

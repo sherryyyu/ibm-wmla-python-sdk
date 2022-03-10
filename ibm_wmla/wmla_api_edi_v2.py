@@ -45,7 +45,7 @@ class ElasticDistributedInferenceV2(BaseService):
     @classmethod
     def new_instance(cls,
                      service_name: str = DEFAULT_SERVICE_NAME,
-                    ) -> 'IbmWmlElasticDistributedInferenceV2':
+                    ) -> 'ElasticDistributedInferenceV2':
         """
         Return a new client for the IBM WML Elastic Distributed Inference service
                using the specified parameters and external configuration.
