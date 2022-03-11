@@ -110,7 +110,6 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def get_inference_token(self,
-        x_auth_token: str,
         **kwargs
     ) -> DetailedResponse:
         """
@@ -124,10 +123,10 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -151,7 +150,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def run_inference(self,
-        x_auth_token: str,
+        
         model_name: str,
         *,
         run_inference_request: 'RunInferenceRequest' = None,
@@ -171,12 +170,12 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         if model_name is None:
             raise ValueError('model_name must be provided')
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -211,7 +210,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def deploy_model(self,
-        x_auth_token: str,
+        
         *,
         userfile: BinaryIO = None,
         **kwargs
@@ -228,10 +227,10 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -256,7 +255,6 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def re_deploy_model(self,
-        x_auth_token: str,
         model: str,
         **kwargs
     ) -> DetailedResponse:
@@ -273,12 +271,12 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         if model is None:
             raise ValueError('model must be provided')
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -305,7 +303,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def get_runtimes(self,
-        x_auth_token: str,
+        
         **kwargs
     ) -> DetailedResponse:
         """
@@ -319,10 +317,10 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse with `dict` result representing a `Runtimes` object
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -343,7 +341,6 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def new_runtime(self,
-        x_auth_token: str,
         *,
         type: str = None,
         launcher: str = None,
@@ -382,12 +379,12 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse with `dict` result representing a `Success` object
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         if envs is not None:
             envs = [convert_model(x) for x in envs]
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -427,7 +424,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def update_runtime(self,
-        x_auth_token: str,
+        
         type: str,
         launcher: str,
         *,
@@ -466,8 +463,8 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse with `dict` result representing a `Success` object
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         if type is None:
             raise ValueError('type must be provided')
         if launcher is None:
@@ -475,7 +472,7 @@ class ElasticDistributedInferenceV2(BaseService):
         if envs is not None:
             envs = [convert_model(x) for x in envs]
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -515,7 +512,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def get_runtime_details(self,
-        x_auth_token: str,
+        
         custom_runtime: str,
         **kwargs
     ) -> DetailedResponse:
@@ -531,12 +528,12 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse with `dict` result representing a `Runtime` object
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         if custom_runtime is None:
             raise ValueError('custom_runtime must be provided')
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -560,7 +557,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def delete_runtime(self,
-        x_auth_token: str,
+        
         custom_runtime: str,
         **kwargs
     ) -> DetailedResponse:
@@ -576,12 +573,12 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse with `dict` result representing a `Success` object
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         if custom_runtime is None:
             raise ValueError('custom_runtime must be provided')
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -609,7 +606,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def get_models(self,
-        x_auth_token: str,
+        
         **kwargs
     ) -> DetailedResponse:
         """
@@ -623,10 +620,10 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse with `List[Model]` result
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -647,7 +644,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def new_model(self,
-        x_auth_token: str,
+        
         *,
         schema_version: str = None,
         name: str = None,
@@ -694,14 +691,14 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         if attributes is not None:
             attributes = [convert_model(x) for x in attributes]
         if mk_environments is not None:
             mk_environments = [convert_model(x) for x in mk_environments]
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -744,7 +741,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def get_model_extensions(self,
-        x_auth_token: str,
+        
         **kwargs
     ) -> DetailedResponse:
         """
@@ -758,10 +755,10 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse with `dict` result representing a `ModelExtensions` object
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -782,7 +779,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def get_model(self,
-        x_auth_token: str,
+        
         model_name: str,
         **kwargs
     ) -> DetailedResponse:
@@ -798,12 +795,12 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse with `dict` result representing a `Model` object
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         if model_name is None:
             raise ValueError('model_name must be provided')
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -827,7 +824,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def delete_model(self,
-        x_auth_token: str,
+        
         model_name: str,
         **kwargs
     ) -> DetailedResponse:
@@ -843,12 +840,12 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         if model_name is None:
             raise ValueError('model_name must be provided')
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -871,7 +868,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def update_model(self,
-        x_auth_token: str,
+        
         model_name: str,
         schema_version: str,
         name: str,
@@ -920,8 +917,8 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         if model_name is None:
             raise ValueError('model_name must be provided')
         if schema_version is None:
@@ -945,7 +942,7 @@ class ElasticDistributedInferenceV2(BaseService):
         if mk_environments is not None:
             mk_environments = [convert_model(x) for x in mk_environments]
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -991,7 +988,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def start_model_inference(self,
-        x_auth_token: str,
+        
         model_name: str,
         **kwargs
     ) -> DetailedResponse:
@@ -1007,12 +1004,12 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         if model_name is None:
             raise ValueError('model_name must be provided')
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -1035,7 +1032,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def stop_model_inference(self,
-        x_auth_token: str,
+        
         model_name: str,
         **kwargs
     ) -> DetailedResponse:
@@ -1051,12 +1048,12 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         if model_name is None:
             raise ValueError('model_name must be provided')
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -1079,7 +1076,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def get_model_instance(self,
-        x_auth_token: str,
+        
         model_name: str,
         **kwargs
     ) -> DetailedResponse:
@@ -1095,12 +1092,12 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse with `dict` result representing a `ModelInstance` object
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         if model_name is None:
             raise ValueError('model_name must be provided')
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -1124,7 +1121,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def get_model_readme(self,
-        x_auth_token: str,
+        
         model_name: str,
         **kwargs
     ) -> DetailedResponse:
@@ -1140,12 +1137,12 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse with `dict` result representing a `GetModelReadmeResponse` object
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         if model_name is None:
             raise ValueError('model_name must be provided')
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -1169,7 +1166,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def update_model_readme(self,
-        x_auth_token: str,
+        
         model_name: str,
         *,
         readme: str = None,
@@ -1189,12 +1186,12 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         if model_name is None:
             raise ValueError('model_name must be provided')
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -1225,7 +1222,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def get_model_stream_url(self,
-        x_auth_token: str,
+        
         model_name: str,
         **kwargs
     ) -> DetailedResponse:
@@ -1241,12 +1238,12 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse with `dict` result representing a `GetModelStreamURLResponse` object
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         if model_name is None:
             raise ValueError('model_name must be provided')
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -1274,7 +1271,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def get_model_profile(self,
-        x_auth_token: str,
+        
         model_name: str,
         **kwargs
     ) -> DetailedResponse:
@@ -1291,12 +1288,12 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse with `dict` result representing a `ModelAppProfile` object
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         if model_name is None:
             raise ValueError('model_name must be provided')
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
@@ -1320,7 +1317,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def update_model_profile(self,
-        x_auth_token: str,
+        
         model_name: str,
         kernel: 'ModelAppProfileKernel',
         name: str,
@@ -1356,8 +1353,8 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse
         """
 
-        if x_auth_token is None:
-            raise ValueError('x_auth_token must be provided')
+        
+            
         if model_name is None:
             raise ValueError('model_name must be provided')
         if kernel is None:
@@ -1378,7 +1375,7 @@ class ElasticDistributedInferenceV2(BaseService):
         policy = convert_model(policy)
         resource_allocation = convert_model(resource_allocation)
         headers = {
-            'X-Auth-Token': x_auth_token
+            
         }
         sdk_headers = get_sdk_headers(service_name=self.DEFAULT_SERVICE_NAME,
                                       service_version='V2',
