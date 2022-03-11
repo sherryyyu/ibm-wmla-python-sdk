@@ -74,21 +74,24 @@ class EDITokenManager(TokenManager, ABC):
             self.headers = {}
         self.headers['Content-Type'] = 'application/json'
         self.proxies = proxies
+        self.authorization_header = self.__construct_basic_auth_header()
         super().__init__(url, disable_ssl_verification=disable_ssl_verification,
                          token_name=self.TOKEN_NAME)
+
+    def __construct_basic_auth_header(self) -> str:
+        authstring = "{0}:{1}".format(self.username, self.password)
+        base64_authorization = base64.b64encode(
+            authstring.encode('utf-8')).decode('utf-8')
+        return 'Basic {0}'.format(base64_authorization)
 
     def request_token(self) -> dict:
         """Makes a request for a token.
         """
-        response = self._request(
+        self.headers['Authorization'] = self.authorization_header
+        response = requests.request(
             method='POST',
             headers=self.headers,
             url=self.url,
-            data=json.dumps({
-                "username": self.username,
-                "password": self.password,
-                "api_key": self.apikey
-            }),
             proxies=self.proxies)
         return response
 
