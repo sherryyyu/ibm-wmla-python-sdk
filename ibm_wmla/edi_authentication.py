@@ -19,7 +19,8 @@ from typing import Dict, Optional
 from requests import Request
 
 from ibm_cloud_sdk_core.authenticators.authenticator import Authenticator
-from ibm_cloud_sdk_core.authenticators.token_managers.cp4d_token_manager import CP4DTokenManager
+from ibm_cloud_sdk_core.authenticators.cp4d_authenticator import CP4DTokenManager
+from ibm_wmla.edi_token import EDITokenManager
 from ibm_cloud_sdk_core.utils import has_bad_first_or_last_char
 
 
@@ -63,7 +64,7 @@ class ElasticDistributedInferenceAuthenticator(Authenticator):
         if not isinstance(disable_ssl_verification, bool):
             raise TypeError('disable_ssl_verification must be a bool')
 
-        self.token_manager = CP4DTokenManager(
+        self.token_manager = EDITokenManager(
             username=username, password=password, apikey=apikey, url=url,
             disable_ssl_verification=disable_ssl_verification, headers=headers, proxies=proxies)
 

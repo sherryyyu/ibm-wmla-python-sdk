@@ -21,8 +21,7 @@ from abc import ABC
 from typing import Optional
 
 import requests
-
-from ibm_cloud_sdk_core.token_mangers.token_manager import TokenManager
+from ibm_cloud_sdk_core.token_managers.token_manager import TokenManager
 from ibm_cloud_sdk_core.api_exception import ApiException
 from ibm_cloud_sdk_core.authenticators.basic_authenticator import BasicAuthenticator
 
