@@ -150,8 +150,8 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def run_inference(self,
-        
         model_name: str,
+        data: dict, 
         *,
         run_inference_request: 'RunInferenceRequest' = None,
         **kwargs
@@ -182,8 +182,6 @@ class ElasticDistributedInferenceV2(BaseService):
                                       operation_id='run_inference')
         headers.update(sdk_headers)
 
-        data = {
-        }
         data = {k: v for (k, v) in data.items() if v is not None}
         data = json.dumps(data)
         headers['content-type'] = 'application/json'
