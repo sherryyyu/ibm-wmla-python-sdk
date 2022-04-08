@@ -19,6 +19,7 @@ from typing import Dict, Optional
 
 from abc import ABC
 from typing import Optional
+import base64
 
 import requests
 from ibm_cloud_sdk_core.token_managers.token_manager import TokenManager
@@ -74,8 +75,7 @@ class EDITokenManager(TokenManager, ABC):
         self.headers['Content-Type'] = 'application/json'
         self.proxies = proxies
         self.authorization_header = self.__construct_basic_auth_header()
-        super().__init__(url, disable_ssl_verification=disable_ssl_verification,
-                         token_name=self.TOKEN_NAME)
+        super().__init__(url, disable_ssl_verification=disable_ssl_verification)
 
     def __construct_basic_auth_header(self) -> str:
         authstring = "{0}:{1}".format(self.username, self.password)
@@ -92,7 +92,7 @@ class EDITokenManager(TokenManager, ABC):
             headers=self.headers,
             url=self.url,
             proxies=self.proxies)
-        return response
+        return response.json()
 
     def set_headers(self, headers: Dict[str, str]) -> None:
         """Headers to be sent with every CP4D token request.
@@ -104,6 +104,21 @@ class EDITokenManager(TokenManager, ABC):
             self.headers = headers
         else:
             raise TypeError('headers must be a dictionary')
+
+
+    def _save_token_info(self, token_response: dict) -> None:
+        """
+        Decode the access token and save the response from the JWT service to the object's state
+        Refresh time is set to approximately 80% of the token's TTL to ensure that
+        the token refresh completes before the current token expires.
+        Parameters
+        ----------
+        token_response : dict
+            Response from token service
+        """
+        self.token_info = token_response
+        self.access_token = token_response.get("user_token")
+
 
     def set_proxies(self, proxies: Dict[str, str]) -> None:
         """Sets the proxies the token manager will use to communicate with CP4D on behalf of the host.
