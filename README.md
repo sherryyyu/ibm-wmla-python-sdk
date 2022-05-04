@@ -65,6 +65,12 @@ or
 easy_install --upgrade "ibm-pvs>=0.0.1"
 ```
 
+To debug:
+
+```
+python setup.py install develop
+```
+
 ## Using the SDK
 For general SDK usage information, please see [this link](https://github.com/IBM/ibm-cloud-sdk-common/blob/master/README.md)
 
