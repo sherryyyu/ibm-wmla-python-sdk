@@ -51,10 +51,10 @@ Service Name | Imported Class Name
 
 ## Installation (not official yet, only supports debug mode)
 
-To install and debug,
+To debug,
 
 ```
-python setup.py install develop
+python setup.py develop
 ```
 
 ## Using the SDK
