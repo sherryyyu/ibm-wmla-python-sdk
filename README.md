@@ -41,31 +41,17 @@ IBM Cloud services:
 
 Service Name | Imported Class Name
 --- | ---
-[wmla](htt) | PowerCloudApiV1
+[wmla](htt) | ElasticDistributedInferenceV2
 
 ## Prerequisites
 
 [ibm-cloud-onboarding]: https://cloud.ibm.com/registration
 
-* An [IBM Cloud][ibm-cloud-onboarding] account.
-* An IAM API key to allow the SDK to access your account. Create one [here](https://cloud.ibm.com/iam/apikeys).
 * Python 3.5.3 or above.
 
-## Installation
+## Installation (not official yet, only supports debug mode)
 
-To install, use `pip` or `easy_install`:
-
-```bash
-pip install --upgrade "ibm-pvs>=0.0.1"
-```
-
-or
-
-```bash
-easy_install --upgrade "ibm-pvs>=0.0.1"
-```
-
-To debug:
+To install and debug,
 
 ```
 python setup.py install develop
@@ -74,27 +60,26 @@ python setup.py install develop
 ## Using the SDK
 For general SDK usage information, please see [this link](https://github.com/IBM/ibm-cloud-sdk-common/blob/master/README.md)
 
-## Setting up Power Cloud service
+## Setting up EDI service
 ```python
-from ibm_pvs import PowerCloudApiV1
-from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
-from ibm_cloud_sdk_core import ApiException
+from ibm_wmla_client import Connection, update_model_profile_parameters
 
-authenticator = IAMAuthenticator("YOUR_IBMCLOUD_API_KEY")
-service = PowerCloudApiV1(authenticator=authenticator)
+service_url = "YOUR_SERVICE_URL:PORT"
+service_instance = "YOUR_INSTANCE_NAME"
+username = "YOUR_UNAME"
+password = "YOUR_PW"
 
-service.set_service_url("https://{region}.power-iaas.cloud.ibm.com")
-crn_headers = {"CRN": "crn:v1:bluemix:public:iam-identity:<your-crn>"}
-service.set_default_headers(crn_headers)
+edi_connection = Connection(service_url, service_instance, wmla_v1=True, edi=True,
+                 apikey=None, username=username, password=password)
 
-#  Listing VPCs
-print("List Power Cloud images")
-try:
-    pvs_images = service.pcloud_images_getall()
-except ApiException as e:
-  print("List Power Cloud failed with status code " + str(e.code) + ": " + e.message)
+edi_connection.connect()
 
-print(pvs_images['id'])
+conn = edi_connection.service_edi
+
+# List models
+response = conn.get_models()
+print(response.result)
+
 ```
 
 ## Questions
