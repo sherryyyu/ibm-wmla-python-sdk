@@ -54,6 +54,7 @@ class ElasticDistributedInferenceAuthenticator(Authenticator):
     def __init__(self,
                  username: str = None,
                  password: str = None,
+                 user_access_token: str = None,
                  url: str = None,
                  *,
                  apikey: str = None,
@@ -65,7 +66,7 @@ class ElasticDistributedInferenceAuthenticator(Authenticator):
             raise TypeError('disable_ssl_verification must be a bool')
 
         self.token_manager = EDITokenManager(
-            username=username, password=password, apikey=apikey, url=url,
+            username=username, password=password, user_access_token = user_access_token, apikey=apikey, url=url,
             disable_ssl_verification=disable_ssl_verification, headers=headers, proxies=proxies)
 
         self.validate()
@@ -83,13 +84,18 @@ class ElasticDistributedInferenceAuthenticator(Authenticator):
         Raises:
             ValueError: The username, password, and/or url are not valid for token requests.
         """
-        if self.token_manager.username is None:
-            raise ValueError('The username shouldn\'t be None.')
 
-        if ((self.token_manager.password is None and self.token_manager.apikey is None)
-                or (self.token_manager.password is not None and self.token_manager.apikey is not None)):
-            raise ValueError(
-                'Exactly one of `apikey` or `password` must be specified.')
+        if self.token_manager.username is None and self.token_manager.user_access_token is None:
+            raise ValueError('A username or a user access token should be specified.')
+        elif self.token_manager.user_access_token is None:
+            if self.token_manager.username is None:
+                raise ValueError('The username shouldn\'t be None.')
+
+            if ((self.token_manager.password is None and self.token_manager.apikey is None)
+                    or (self.token_manager.password is not None and self.token_manager.apikey is not None)):
+                raise ValueError(
+                    'Exactly one of `apikey` or `password` must be specified.')
+
 
         if self.token_manager.url is None:
             raise ValueError('The url shouldn\'t be None.')
