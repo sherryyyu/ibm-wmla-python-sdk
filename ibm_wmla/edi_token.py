@@ -58,6 +58,7 @@ class EDITokenManager(TokenManager, ABC):
     def __init__(self,
                  username: str = None,
                  password: str = None,
+                 user_access_token: str = None,
                  url: str = None,
                  *,
                  apikey: str = None,
@@ -66,6 +67,7 @@ class EDITokenManager(TokenManager, ABC):
                  proxies: Optional[Dict[str, str]] = None) -> None:
         self.username = username
         self.password = password
+        self.user_access_token = user_access_token
         if url and not self.VALIDATE_AUTH_PATH in url:
             url = url + '/dlim/v1/auth/token'
         self.apikey = apikey
@@ -87,12 +89,16 @@ class EDITokenManager(TokenManager, ABC):
         """Makes a request for a token.
         """
         self.headers['Authorization'] = self.authorization_header
-        response = requests.request(
-            method='POST',
-            headers=self.headers,
-            url=self.url,
-            proxies=self.proxies)
-        return response.json()
+        if self.user_access_token is None:
+            response = requests.request(
+                method='POST',
+                headers=self.headers,
+                url=self.url,
+                proxies=self.proxies)
+            print('*** response: ',response.json())
+            return response.json()
+        else:
+            return {'user_token': self.user_access_token, 'service_token': self.user_access_token}
 
     def set_headers(self, headers: Dict[str, str]) -> None:
         """Headers to be sent with every CP4D token request.
