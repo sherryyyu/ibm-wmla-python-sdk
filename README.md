@@ -54,6 +54,8 @@ Service Name | Imported Class Name
 To debug,
 
 ```
+pip install -r requirements.txt
+
 python setup.py develop
 ```
 
