@@ -43,6 +43,11 @@ Service Name | Imported Class Name
 --- | ---
 [wmla](htt) | ElasticDistributedInferenceV2
 
+Compatibility: 
+
+Version 0.0.1 is compatible with WMLA REST API 2.3.0
+Version 0.0.2 is compatible with WMLA REST API 2.3.7
+
 ## Prerequisites
 
 [ibm-cloud-onboarding]: https://cloud.ibm.com/registration
@@ -54,7 +59,15 @@ Service Name | Imported Class Name
 To debug,
 
 ```
+pip install requirements.txt
 python setup.py develop
+```
+
+To install the package,
+
+```
+pip install requirements.txt
+pip install .
 ```
 
 ## Using the SDK
@@ -62,7 +75,7 @@ For general SDK usage information, please see [this link](https://github.com/IBM
 
 ## Setting up EDI service
 ```python
-from ibm_wmla_client import Connection, update_model_profile_parameters
+from ibm_wmla_client import Connection
 
 service_url = "YOUR_SERVICE_URL:PORT"
 service_instance = "YOUR_INSTANCE_NAME"
@@ -70,7 +83,7 @@ username = "YOUR_UNAME"
 password = "YOUR_PW"
 
 edi_connection = Connection(service_url, service_instance, wmla_v1=True, edi=True,
-                 apikey=None, username=username, password=password)
+                 apikey=None, username=username, password=password, user_access_token = None)
 
 edi_connection.connect()
 
