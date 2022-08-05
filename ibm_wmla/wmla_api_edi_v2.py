@@ -210,7 +210,7 @@ class ElasticDistributedInferenceV2(BaseService):
     def deploy_model(self,
         
         *,
-        userfile: BinaryIO = None,
+        body: BinaryIO = None,
         **kwargs
     ) -> DetailedResponse:
         """
@@ -218,8 +218,8 @@ class ElasticDistributedInferenceV2(BaseService):
 
         Upload model package files.  Permission required: Inference Publish.
 
-        :param str x_auth_token: Auth Token used to authenticate API.
-        :param BinaryIO userfile: (optional)
+        :param str x_auth_token:
+        :param BinaryIO body: (optional)
         :param dict headers: A `dict` containing the request headers
         :return: A `DetailedResponse` containing the result, headers and HTTP status code.
         :rtype: DetailedResponse
@@ -234,11 +234,10 @@ class ElasticDistributedInferenceV2(BaseService):
                                       service_version='V2',
                                       operation_id='deploy_model')
         headers.update(sdk_headers)
-
-        form_data = []
-        if userfile:
-            form_data.append(('userfile', (None, userfile, 'application/octet-stream')))
-
+        print(headers)
+        
+        data = body
+        headers['content-type'] = 'application/octet-stream'
         if 'headers' in kwargs:
             headers.update(kwargs.get('headers'))
 
@@ -246,7 +245,7 @@ class ElasticDistributedInferenceV2(BaseService):
         request = self.prepare_request(method='POST',
                                        url=url,
                                        headers=headers,
-                                       files=form_data)
+                                       data=data)
 
         response = self.send(request, **kwargs)
         return response
@@ -254,6 +253,8 @@ class ElasticDistributedInferenceV2(BaseService):
 
     def re_deploy_model(self,
         model: str,
+        *,
+        body: BinaryIO = None,
         **kwargs
     ) -> DetailedResponse:
         """
@@ -262,15 +263,15 @@ class ElasticDistributedInferenceV2(BaseService):
         Deploy and publish an exsiting model package.  Permission required: Inference
         Publish.
 
-        :param str x_auth_token: Auth Token used to authenticate API.
-        :param str model: Directory where the model package file are uploaded.
+        :param str x_auth_token:
+        :param str model: An existing model name which must be matched with the
+               model description in your package for redeploying.
+        :param BinaryIO body: (optional)
         :param dict headers: A `dict` containing the request headers
         :return: A `DetailedResponse` containing the result, headers and HTTP status code.
         :rtype: DetailedResponse
         """
 
-        
-            
         if model is None:
             raise ValueError('model must be provided')
         headers = {
@@ -281,6 +282,9 @@ class ElasticDistributedInferenceV2(BaseService):
                                       operation_id='re_deploy_model')
         headers.update(sdk_headers)
 
+        data = body
+        headers['content-type'] = 'application/octet-stream'
+
         if 'headers' in kwargs:
             headers.update(kwargs.get('headers'))
 
@@ -290,7 +294,8 @@ class ElasticDistributedInferenceV2(BaseService):
         url = '/dlim/v1/deployment/model/{model}'.format(**path_param_dict)
         request = self.prepare_request(method='POST',
                                        url=url,
-                                       headers=headers)
+                                       headers=headers,
+                                       data=data)
 
         response = self.send(request, **kwargs)
         return response
