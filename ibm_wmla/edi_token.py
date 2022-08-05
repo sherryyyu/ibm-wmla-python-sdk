@@ -95,7 +95,6 @@ class EDITokenManager(TokenManager, ABC):
                 headers=self.headers,
                 url=self.url,
                 proxies=self.proxies)
-            print('*** response: ',response.json())
             return response.json()
         else:
             return {'user_token': self.user_access_token, 'service_token': self.user_access_token}
