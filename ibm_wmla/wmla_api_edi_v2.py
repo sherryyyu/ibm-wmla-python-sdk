@@ -28,7 +28,7 @@ import json
 from ibm_cloud_sdk_core import BaseService, DetailedResponse
 from ibm_cloud_sdk_core.authenticators.authenticator import Authenticator
 from ibm_cloud_sdk_core.get_authenticator import get_authenticator_from_environment
-from ibm_cloud_sdk_core.utils import convert_model
+# from ibm_cloud_sdk_core.utils import convert_model
 
 from .common import get_sdk_headers
 
@@ -234,7 +234,6 @@ class ElasticDistributedInferenceV2(BaseService):
                                       service_version='V2',
                                       operation_id='deploy_model')
         headers.update(sdk_headers)
-        print(headers)
         
         data = body
         headers['content-type'] = 'application/octet-stream'
@@ -1322,13 +1321,7 @@ class ElasticDistributedInferenceV2(BaseService):
     def update_model_profile(self,
         
         model_name: str,
-        kernel: 'ModelAppProfileKernel',
-        name: str,
-        policy: 'ModelAppProfilePolicy',
-        replica: int,
-        resource_allocation: 'ModelAppProfileResourceAllocation',
-        schema_version: str,
-        type: str,
+        mode_profile: dict,
         *,
         create_time: str = None,
         last_update_time: str = None,
@@ -1342,13 +1335,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
         :param str x_auth_token: Auth Token used to authenticate API.
         :param str model_name: Name of the model.
-        :param ModelAppProfileKernel kernel:
-        :param str name:
-        :param ModelAppProfilePolicy policy:
-        :param int replica:
-        :param ModelAppProfileResourceAllocation resource_allocation:
-        :param str schema_version:
-        :param str type:
+        :param dict mode_profile: The model profile.
         :param str create_time: (optional)
         :param str last_update_time: (optional)
         :param dict headers: A `dict` containing the request headers
@@ -1360,23 +1347,7 @@ class ElasticDistributedInferenceV2(BaseService):
             
         if model_name is None:
             raise ValueError('model_name must be provided')
-        if kernel is None:
-            raise ValueError('kernel must be provided')
-        if name is None:
-            raise ValueError('name must be provided')
-        if policy is None:
-            raise ValueError('policy must be provided')
-        if replica is None:
-            raise ValueError('replica must be provided')
-        if resource_allocation is None:
-            raise ValueError('resource_allocation must be provided')
-        if schema_version is None:
-            raise ValueError('schema_version must be provided')
-        if type is None:
-            raise ValueError('type must be provided')
-        kernel = convert_model(kernel)
-        policy = convert_model(policy)
-        resource_allocation = convert_model(resource_allocation)
+
         headers = {
             
         }
@@ -1385,19 +1356,7 @@ class ElasticDistributedInferenceV2(BaseService):
                                       operation_id='update_model_profile')
         headers.update(sdk_headers)
 
-        data = {
-            'kernel': kernel,
-            'name': name,
-            'policy': policy,
-            'replica': replica,
-            'resource_allocation': resource_allocation,
-            'schema_version': schema_version,
-            'type': type,
-            'create_time': create_time,
-            'last_update_time': last_update_time
-        }
-        data = {k: v for (k, v) in data.items() if v is not None}
-        data = json.dumps(data)
+        data = json.dumps(mode_profile)
         headers['content-type'] = 'application/json'
 
         if 'headers' in kwargs:
