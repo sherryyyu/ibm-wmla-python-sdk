@@ -60,6 +60,8 @@ Version 0.0.2 is compatible with WMLA REST API 2.3.7
 To debug,
 
 ```
+pip install -r requirements.txt
+
 python setup.py develop
 ```
 
