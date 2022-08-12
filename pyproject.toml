@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ibm_wmla"
-version = "0.1.1"
+version = "0.1.2"
 description = ""
 authors = ["Shuang Yu <shuang.yu@ibm.com>", "Kiyeon Jeon <Kiyeon.Jeon@ibm.com>", "Hyun Tae Kim <Hyuntae.Kim1@ibm.com>"]
 
