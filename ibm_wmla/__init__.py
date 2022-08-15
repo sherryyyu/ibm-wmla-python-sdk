@@ -14,10 +14,3 @@
 # limitations under the License.
 
 """Python client library for the IBM Cloud Power Systems Virtual Servers"""
-
-#from .common import get_sdk_headers
-#from .version import __version__
-#from .wmla_api_v1 import DeepLearningImpactV1
-#from .wmla_api_edi_v2 import ElasticDistributedInferenceV2
-#from .token_managers.edi_token import EDITokenManager
-#from .authenticators import ElasticDistributedInferenceAuthenticator
