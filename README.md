@@ -1,9 +1,9 @@
 [![Build Status](https://travis.ibm.com/CloudEngineering/python-sdk-template.svg?token=eW5FVD71iyte6tTby8gr&branch=master)](https://travis.ibm.com/CloudEngineering/python-sdk-template)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-# IBM Watson Machine Learning Accelerator Python SDK Version 0.9 
+# IBM Watson Machine Learning Accelerator Elastic Distributed Inference Python SDK 
 
-Python client library for IBM Watson Machine Learning Accelerator [IBM Watson Machine Learning Accelerator APIs](https://www.ibm.com/docs/en/wmla/2.3?topic=reference-deep-learning-rest-api).
+Python client library for IBM Watson Machine Learning Accelerator [IBM Watson Machine Learning Accelerator Inference APIs](https://www.ibm.com/docs/en/wmla/2.3?topic=workload-inference).
 
 Disclaimer: this SDK is being released initially as a **pre-release** version.
 Changes might occur which impact applications that use this SDK.
