@@ -43,11 +43,11 @@ Service Name | Imported Class Name
 --- | ---
 [wmla](htt) | ElasticDistributedInferenceV2
 
-Compatibility: 
+## Compatibility: 
 
 Version 0.0.1 is compatible with WMLA REST API 2.3.0
 
-Version 0.0.2 is compatible with WMLA REST API 2.3.7
+Version 0.1.x is compatible with WMLA REST API 2.3.7
 
 ## Prerequisites
 
