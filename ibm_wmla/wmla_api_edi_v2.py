@@ -319,8 +319,7 @@ class ElasticDistributedInferenceV2(BaseService):
         :rtype: DetailedResponse with `dict` result representing a `Runtimes` object
         """
 
-        
-            
+    
         headers = {
             
         }
@@ -343,19 +342,7 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def new_runtime(self,
-        *,
-        type: str = None,
-        launcher: str = None,
-        schema_version: str = None,
-        pre_exec: str = None,
-        machine_type: str = None,
-        envs: List['RuntimeEnvsItem'] = None,
-        description: str = None,
-        conda_home: str = None,
-        conda_env_name: str = None,
-        docker_img: str = None,
-        epoch_created: int = None,
-        epoch_updated: int = None,
+        runtime: dict,
         **kwargs
     ) -> DetailedResponse:
         """
@@ -364,27 +351,13 @@ class ElasticDistributedInferenceV2(BaseService):
         Insert a new custom runtime.  Permission required: Inference Publish.
 
         :param str x_auth_token: Auth Token used to authenticate API.
-        :param str type: (optional)
-        :param str launcher: (optional)
-        :param str schema_version: (optional)
-        :param str pre_exec: (optional)
-        :param str machine_type: (optional)
-        :param List[RuntimeEnvsItem] envs: (optional)
-        :param str description: (optional)
-        :param str conda_home: (optional)
-        :param str conda_env_name: (optional)
-        :param str docker_img: (optional)
-        :param int epoch_created: (optional)
-        :param int epoch_updated: (optional)
-        :param dict headers: A `dict` containing the request headers
+        :param dict runtime: a `dict` containing the new runtime definition
         :return: A `DetailedResponse` containing the result, headers and HTTP status code.
         :rtype: DetailedResponse with `dict` result representing a `Success` object
         """
+        if runtime is None:
+            raise ValueError('runtime must be provided')
 
-        
-            
-        if envs is not None:
-            envs = [convert_model(x) for x in envs]
         headers = {
             
         }
@@ -393,22 +366,7 @@ class ElasticDistributedInferenceV2(BaseService):
                                       operation_id='new_runtime')
         headers.update(sdk_headers)
 
-        data = {
-            'type': type,
-            'launcher': launcher,
-            'schema_version': schema_version,
-            'pre_exec': pre_exec,
-            'machine_type': machine_type,
-            'envs': envs,
-            'description': description,
-            'conda_home': conda_home,
-            'conda_env_name': conda_env_name,
-            'docker_img': docker_img,
-            'epoch_created': epoch_created,
-            'epoch_updated': epoch_updated
-        }
-        data = {k: v for (k, v) in data.items() if v is not None}
-        data = json.dumps(data)
+        data = json.dumps(runtime)
         headers['content-type'] = 'application/json'
 
         if 'headers' in kwargs:
@@ -426,20 +384,8 @@ class ElasticDistributedInferenceV2(BaseService):
 
 
     def update_runtime(self,
-        
-        type: str,
-        launcher: str,
-        *,
-        schema_version: str = None,
-        pre_exec: str = None,
-        machine_type: str = None,
-        envs: List['RuntimeEnvsItem'] = None,
-        description: str = None,
-        conda_home: str = None,
-        conda_env_name: str = None,
-        docker_img: str = None,
-        epoch_created: int = None,
-        epoch_updated: int = None,
+        custom_runtime: str,
+        runtime: dict,
         **kwargs
     ) -> DetailedResponse:
         """
@@ -447,32 +393,14 @@ class ElasticDistributedInferenceV2(BaseService):
 
         Update the provided runtime.  Permission required: Inference Update.
 
-        :param str x_auth_token: Auth Token used to authenticate API.
-        :param str type:
-        :param str launcher:
-        :param str schema_version: (optional)
-        :param str pre_exec: (optional)
-        :param str machine_type: (optional)
-        :param List[RuntimeEnvsItem] envs: (optional)
-        :param str description: (optional)
-        :param str conda_home: (optional)
-        :param str conda_env_name: (optional)
-        :param str docker_img: (optional)
-        :param int epoch_created: (optional)
-        :param int epoch_updated: (optional)
-        :param dict headers: A `dict` containing the request headers
+        :param str custom_runtime: runtime name.
+        :param dict runtime: runtime definition to be updated.
         :return: A `DetailedResponse` containing the result, headers and HTTP status code.
         :rtype: DetailedResponse with `dict` result representing a `Success` object
         """
+        if custom_runtime is None:
+            raise ValueError('custom_runtime must be provided')
 
-        
-            
-        if type is None:
-            raise ValueError('type must be provided')
-        if launcher is None:
-            raise ValueError('launcher must be provided')
-        if envs is not None:
-            envs = [convert_model(x) for x in envs]
         headers = {
             
         }
@@ -481,29 +409,19 @@ class ElasticDistributedInferenceV2(BaseService):
                                       operation_id='update_runtime')
         headers.update(sdk_headers)
 
-        data = {
-            'type': type,
-            'launcher': launcher,
-            'schema_version': schema_version,
-            'pre_exec': pre_exec,
-            'machine_type': machine_type,
-            'envs': envs,
-            'description': description,
-            'conda_home': conda_home,
-            'conda_env_name': conda_env_name,
-            'docker_img': docker_img,
-            'epoch_created': epoch_created,
-            'epoch_updated': epoch_updated
-        }
-        data = {k: v for (k, v) in data.items() if v is not None}
-        data = json.dumps(data)
+        data = json.dumps(runtime)
         headers['content-type'] = 'application/json'
 
         if 'headers' in kwargs:
             headers.update(kwargs.get('headers'))
         headers['Accept'] = 'application/json'
 
-        url = '/dlim/v1/deployment/runtime'
+
+        path_param_keys = ['custom_runtime']
+        path_param_values = self.encode_path_vars(custom_runtime)
+        path_param_dict = dict(zip(path_param_keys, path_param_values))
+        url = '/dlim/v1/deployment/runtime/{custom_runtime}'.format(**path_param_dict)
+
         request = self.prepare_request(method='PUT',
                                        url=url,
                                        headers=headers,
