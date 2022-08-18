@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "ibm_wmla"
-version = "0.1.2"
-description = ""
+version = "0.1.0"
+description = "Python client library for IBM Watson Machine Learning Accelerator"
 authors = ["Shuang Yu <shuang.yu@ibm.com>", "Kiyeon Jeon <Kiyeon.Jeon@ibm.com>", "Hyun Tae Kim <Hyuntae.Kim1@ibm.com>", "Adam Makarucha <adamjm@au1.ibm.com>"]
 
 [tool.poetry.dependencies]
