@@ -55,21 +55,30 @@ Version 0.1.x is compatible with WMLA REST API 2.3.7
 
 * Python 3.5.3 or above.
 
-## Installation (not official yet, only supports debug mode)
+## Installation 
+
+### Install with `pip`
+
+```bash
+pip install ibm-wmla
+```
+
+### Install from source
+
+To install the package, clone this repository and 
+
+```bash
+cd ibm-wmla-python-sdk
+pip install requirements.txt
+pip install .
+```
 
 To debug,
 
-```
+```bash
+cd ibm-wmla-python-sdk
 pip install -r requirements.txt
-
 python setup.py develop
-```
-
-To install the package,
-
-```
-pip install requirements.txt
-pip install .
 ```
 
 ## Using the SDK
